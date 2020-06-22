@@ -1,0 +1,5 @@
+<div class="ant-row">
+  <label nz-checkbox [(ngModel)]="listenToStream" (ngModelChange)="streamToggleClick()">Listen to stream</label>
+</div>
+
+<app-city-card *ngFor="let city of cities" [cityData]="city"></app-city-card>

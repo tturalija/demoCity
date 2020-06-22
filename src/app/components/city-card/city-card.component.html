@@ -1,0 +1,32 @@
+<nz-card [nzTitle]=" cityData.city" *ngIf="!loading">
+  <div nz-row>
+    <div nz-col nzSpan="6">
+      <div><strong>{{cityData.index}}</strong></div>
+    </div>
+    <div nz-col nzSpan="6">
+      <div>Longitude: <strong>{{cityData.longitude}}</strong></div>
+      <div>Latitude: <strong>{{cityData.latitude}}</strong></div>
+    </div>
+    <div nz-col nzSpan="6">
+      <h4>Population:</h4>
+      <h1>{{cityData.population}}</h1>
+    </div>
+    <div nz-col nzSpan="6">
+      <h4>Power consumption:</h4>
+      <h1>{{cityData.powerConsumption}}</h1>
+    </div>
+  </div>
+  <nz-card [nzTitle]="'Active renewable sources: ' +  cityData.renewableSources.length" nzType="inner"
+           nzTitle="Renewable sources list" [nzExtra]="extraTemplate">
+    <ng-template [ngIf]="showMore">
+      <div nz-row *ngFor="let source of cityData.renewableSources">
+        <div nz-col nzSpan="8">{{source.index}}</div>
+        <div nz-col nzSpan="8">{{source.powerOutput}}</div>
+        <div nz-col nzSpan="8"><strong>{{source.energySource}}</strong></div>
+      </div>
+    </ng-template>
+  </nz-card>
+</nz-card>
+<ng-template #extraTemplate>
+  <a (click)="toggleShowMore(!showMore)">more</a>
+</ng-template>
